@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Piano à 7 touches-Seven keys piano</title>
+<style>
+body {
+	background-color: white; 
+	font-family: Verdana, sans-serif; 
+	font-size: 100%;
+ }
+ 
+img{
+	width:20%;
+	margin: 0 auto;
+}
+
+
+.touches{
+	width:1px;
+	height:0px;
+	overflow:hidden;
+	position:absolute;
+}
+
+td{
+	border: 0.2px dotted grey;
+	width: 120px;
+}
+
+.keys {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none; 
+}
+
+.key {
+	border-radius: .5rem;
+	padding: 1rem .5rem;
+	transition: all .07s ease;
+	width: 100%;
+	text-align: center;
+	color: white;
+	text-shadow: 0 0 .5rem black;
+}
+
+.key:hover{
+	background-color: black;
+	width: 85%;
+}
+
+.keyinstruments {
+	border-radius: .5rem;
+	padding: 1rem .5rem;
+	transition: all .7s ease;
+	width: 100%;
+	text-align: center;
+	color: white;
+	text-shadow: 0 0 .5rem black;
+}
+
+.playing {
+	transform: scale(1.2);
+	border-color: grey;
+	box-shadow: 0 0 1rem grey;
+}
+
+kbd {
+	display: block;
+	font-size: 4rem;
+}
+
+.sound {
+	font-size: 1.2rem;
+	letter-spacing: .1rem;  
+}
+
+
+.shake-horizontal {
+	display: block;
+	transform-origin: center center; }
+
+.shake-freeze,
+.shake-constant.shake-constant--hover:hover,
+.shake-trigger:hover .shake-constant.shake-constant--hover {
+	animation-play-state: paused; }
+
+.shake-freeze:hover,
+.shake-trigger:hover .shake-freeze, .shake-horizontal:hover,
+.shake-trigger:hover .shake-horizontal {
+	animation-play-state: running; }
+
+@keyframes shake-horizontal {
+  2% {
+    transform: translate(-4px, 0) rotate(0); }
+  4% {
+    transform: translate(7px, 0) rotate(0); }
+  6% {
+    transform: translate(-3px, 0) rotate(0); }
+  8% {
+    transform: translate(-7px, 0) rotate(0); }
+  10% {
+    transform: translate(3px, 0) rotate(0); }
+  12% {
+    transform: translate(-9px, 0) rotate(0); }
+  14% {
+    transform: translate(-1px, 0) rotate(0); }
+  16% {
+    transform: translate(7px, 0) rotate(0); }
+  18% {
+    transform: translate(-3px, 0) rotate(0); }
+  20% {
+    transform: translate(10px, 0) rotate(0); }
+  22% {
+    transform: translate(8px, 0) rotate(0); }
+  24% {
+    transform: translate(7px, 0) rotate(0); }
+  26% {
+    transform: translate(4px, 0) rotate(0); }
+  28% {
+    transform: translate(7px, 0) rotate(0); }
+  30% {
+    transform: translate(9px, 0) rotate(0); }
+  32% {
+    transform: translate(4px, 0) rotate(0); }
+  34% {
+    transform: translate(2px, 0) rotate(0); }
+  36% {
+    transform: translate(-2px, 0) rotate(0); }
+  38% {
+    transform: translate(-2px, 0) rotate(0); }
+  40% {
+    transform: translate(0px, 0) rotate(0); }
+  42% {
+    transform: translate(-3px, 0) rotate(0); }
+  44% {
+    transform: translate(1px, 0) rotate(0); }
+  46% {
+    transform: translate(-4px, 0) rotate(0); }
+  48% {
+    transform: translate(-7px, 0) rotate(0); }
+  50% {
+    transform: translate(4px, 0) rotate(0); }
+  52% {
+    transform: translate(-5px, 0) rotate(0); }
+  54% {
+    transform: translate(-2px, 0) rotate(0); }
+  56% {
+    transform: translate(-6px, 0) rotate(0); }
+  58% {
+    transform: translate(7px, 0) rotate(0); }
+  60% {
+    transform: translate(2px, 0) rotate(0); }
+  62% {
+    transform: translate(10px, 0) rotate(0); }
+  64% {
+    transform: translate(-7px, 0) rotate(0); }
+  66% {
+    transform: translate(-6px, 0) rotate(0); }
+  68% {
+    transform: translate(2px, 0) rotate(0); }
+  70% {
+    transform: translate(2px, 0) rotate(0); }
+  72% {
+    transform: translate(5px, 0) rotate(0); }
+  74% {
+    transform: translate(-8px, 0) rotate(0); }
+  76% {
+    transform: translate(2px, 0) rotate(0); }
+  78% {
+    transform: translate(-1px, 0) rotate(0); }
+  80% {
+    transform: translate(-8px, 0) rotate(0); }
+  82% {
+    transform: translate(3px, 0) rotate(0); }
+  84% {
+    transform: translate(-8px, 0) rotate(0); }
+  86% {
+    transform: translate(6px, 0) rotate(0); }
+  88% {
+    transform: translate(5px, 0) rotate(0); }
+  90% {
+    transform: translate(5px, 0) rotate(0); }
+  92% {
+    transform: translate(-2px, 0) rotate(0); }
+  94% {
+    transform: translate(4px, 0) rotate(0); }
+  96% {
+    transform: translate(-2px, 0) rotate(0); }
+  98% {
+    transform: translate(-4px, 0) rotate(0); }
+  0%, 100% {
+    transform: translate(0, 0) rotate(0); } }
+
+.shake-horizontal:hover,
+.shake-trigger:hover .shake-horizontal, .shake-horizontal.shake-freeze, .shake-horizontal.shake-constant {
+	animation-name: shake-horizontal;
+	animation-duration: 100ms;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite; }
+
+
+  a{
+	color:black;
+	text-decoration: none; 
+  }
+  
+  a:visited{
+	color:black;
+  }
+
+  a:hover{
+	color:white;
+  }
+  </style>
+		</head>
+	<body>
+<img src="PianoHeyDavidLafargePokémonEdition.svg" />
+	
+<h3>Aperçus sur le clavier</h3>
+N'oubliez pas de cliquer dans la zone pour activer les touches du clavier!
+<script>
+var key_VI = new Audio('-6.wav');
+
+var key_V = new Audio('-5.wav');
+
+var key_IV = new Audio('-4.wav');
+
+var key_III = new Audio('-3.wav');
+
+var key_II = new Audio('-2.wav');
+
+var key_I = new Audio('-1.wav');
+
+var keyO = new Audio('0.wav');
+
+var keyI = new Audio('1.wav');
+
+var keyII = new Audio('2.wav');
+
+var keyIII = new Audio('3.wav');
+
+var keyIV = new Audio('4.wav');
+
+var keyV = new Audio('5.wav');
+
+var keyVI = new Audio('6.wav');
+</script>
+
+
+
+<table class="keys" style="float:absolue; postion:inline">
+<td>
+<a class="shake-horizontal"  target="id_iframe" onclick="key_VI.play()">
+    <div data-key="222" class="key">
+      <kbd>³</kbd>
+      <span class="sound">²</span>
+	  </a>
+    </div>
+	
+	<div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+	
+ </td>
+<td>
+<a class="shake-horizontal"  target="id_iframe" onclick="key_V.play()">
+	    <div data-key="49" class="key">
+      <kbd>1</kbd>
+      <span class="sound">& |</span>
+	  </a>
+    </div>
+ </td>
+
+ <div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+ 
+<td>
+<a class="shake-horizontal" target="id_iframe" onclick="key_IV.play()">
+    <div data-key="50" class="key">
+      <kbd>2</kbd>
+      <span class="sound">é @</span>
+	  </a>
+    </div>
+ </td>	
+ 
+ <div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+ 
+<td>
+<a class="shake-horizontal" target="id_iframe" onclick="key_III.play()">
+    <div data-key="51" class="key">
+      <kbd>3</kbd>
+      <span class="sound">" #</span>
+	  </a>
+    </div>
+ </td>	
+ 
+ <div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+ 
+<td>
+<a  class="shake-horizontal" target="id_iframe" onclick="key_II.play()">
+    <div data-key="52" class="key">
+      <kbd>4</kbd>
+      <span class="sound">'</span>
+	  </a>
+    </div>
+ </td>
+<td>	
+<a class="shake-horizontal"  target="id_iframe" onclick="key_I.play()">
+    <div data-key="53" class="key">
+      <kbd>5</kbd>
+      <span class="sound">(</span>
+	  </a>
+    </div>
+ </td>
+
+<div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+ 
+<td>	
+	<a class="shake-horizontal" target="id_iframe" onclick="keyO.play()">
+    <div data-key="54" class="key">
+      <kbd>6</kbd>
+      <span class="sound">§ ^</span>
+	  </a>
+	  </td>
+    </div>
+	
+<div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+ 
+<td>	
+	<a class="shake-horizontal" target="id_iframe" onclick="keyI.play()">
+    <div data-key="55" class="key">
+      <kbd>7</kbd>
+      <span class="sound">è</span>
+	  </a>
+	  </td>
+    </div>
+	
+<div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+ 
+<td>	
+	<a class="shake-horizontal" target="id_iframe" onclick="keyII.play()">
+    <div data-key="56" class="key">
+      <kbd>8</kbd>
+      <span class="sound">!</span>
+	  </a>
+	  </td>
+    </div>
+	
+<div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+ 
+<td>	
+	<a class="shake-horizontal" target="id_iframe" onclick="keyIII.play()">
+    <div data-key="57" class="key">
+      <kbd>9</kbd>
+      <span class="sound">ç {</span>
+	  </a>
+	  </td>
+    </div>
+	
+<div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+ 
+<td>	
+	<a class="shake-horizontal" target="id_iframe" onclick="keyIV.play()">
+    <div data-key="48" class="key">
+      <kbd>0</kbd>
+      <span class="sound">à }</span>
+	  </a>
+	  </td>
+    </div>
+	
+<div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+ 
+<td>	
+	<a class="shake-horizontal" target="id_iframe" onclick="keyV.play()">
+    <div data-key="219" class="key">
+      <kbd>°</kbd>
+      <span class="sound">(</span>
+	  </a>
+	  </td>
+    </div>
+
+<div class="touches">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+ 
+<td>	
+	<a class="shake-horizontal" target="id_iframe" onclick="keyVI.play()">
+    <div data-key="189" class="key">
+      <kbd>_</kbd>
+      <span class="sound">-</span>
+	  </a>
+	  </td>
+    </div>
+  </table>
+
+
+  <audio data-key="222" src="-6.wav"></audio>
+  <audio data-key="49" src= "-5.wav"></audio>
+  <audio data-key="50" src="-4.wav"></audio>
+  <audio data-key="51" src="-3.wav"></audio>
+  <audio data-key="52" src="-2.wav"></audio>
+  <audio data-key="53" src="-1.wav"></audio>
+  <audio data-key="54" src="0.wav"></audio>
+  <audio data-key="55" src="1.wav"></audio>
+  <audio data-key="56" src="2.wav"></audio>
+  <audio data-key="57" src="3.wav"></audio>
+  <audio data-key="48" src="4.wav"></audio>
+  <audio data-key="219" src="5.wav"></audio>
+  <audio data-key="189" src="6.wav"></audio>
+
+  <script>
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound);
+</script>
+</body>
+</html>
+
+	</body>
+</html>
